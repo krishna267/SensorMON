@@ -74,19 +74,19 @@ public class graphActivity extends AppCompatActivity implements SensorEventListe
         Sensor proxim = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
         if(acceleromter!=null){
-            sensorManager.registerListener(this,acceleromter,SensorManager.SENSOR_DELAY_FASTEST);
+            sensorManager.registerListener(this,acceleromter,SensorManager.SENSOR_DELAY_NORMAL);
         }else {
             Toast.makeText(this,"Accelerometer not available",Toast.LENGTH_SHORT).show();
         }
 
         if(lightSensor!=null){
-            sensorManager.registerListener(this,lightSensor,SensorManager.SENSOR_DELAY_FASTEST);
+            sensorManager.registerListener(this,lightSensor,SensorManager.SENSOR_DELAY_NORMAL);
         }else {
             Toast.makeText(this,"Light Sensor not available",Toast.LENGTH_SHORT).show();
         }
 
         if(magnet!=null){
-            sensorManager.registerListener(this,magnet,SensorManager.SENSOR_DELAY_FASTEST);
+            sensorManager.registerListener(this,magnet,SensorManager.SENSOR_DELAY_NORMAL);
         }else {
             Toast.makeText(this,"Magnetic Sensor not available",Toast.LENGTH_SHORT).show();
         }
@@ -103,7 +103,7 @@ public class graphActivity extends AppCompatActivity implements SensorEventListe
         switch (event.sensor.getType()){
             case Sensor.TYPE_ACCELEROMETER:
                 double rms = Math.sqrt(event.values[0]*event.values[0]+event.values[1]*event.values[1]+event.values[2]*event.values[2]);
-                aseries.appendData(new DataPoint(i++,rms),true,100);
+                aseries.appendData(new DataPoint(i++,rms),true,1000);
                 break;
             case Sensor.TYPE_PROXIMITY:
                 pseries.appendData(new DataPoint(j++,event.values[0]),true,10);
@@ -137,5 +137,5 @@ public class graphActivity extends AppCompatActivity implements SensorEventListe
 
         i=j=k=l=0;
     }
-    
+
 }

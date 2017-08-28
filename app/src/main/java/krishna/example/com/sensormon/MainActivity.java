@@ -73,16 +73,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent event) {
         switch (event.sensor.getType()){
             case Sensor.TYPE_ACCELEROMETER:
-                accelmeter.setText(Math.sqrt(event.values[0]*event.values[0]+event.values[1]*event.values[1]+event.values[2]*event.values[2])+"");
+                accelmeter.setText("Accelerometer : "+Math.sqrt(event.values[0]*event.values[0]+event.values[1]*event.values[1]+event.values[2]*event.values[2])+"");
                 break;
             case Sensor.TYPE_PROXIMITY:
-                proximity.setText(""+event.values[0]);
+                proximity.setText("Proximity : "+event.values[0]);
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD:
-                magnetic.setText(""+event.values[0]);
+                magnetic.setText("Magnetic Field : "+event.values[0]);
                 break;
             case Sensor.TYPE_LIGHT:
-                luminance.setText(""+event.values[0]);
+                luminance.setText("Luminance : "+event.values[0]);
                 break;
         }
     }
